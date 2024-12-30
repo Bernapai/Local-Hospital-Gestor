@@ -1,6 +1,7 @@
 from models.cita import Cita
 from db import db ,cursor
 
+
 class CitaServices ():
   
   def agregarCita(self, cita:Cita):

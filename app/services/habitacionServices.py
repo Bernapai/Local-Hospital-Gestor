@@ -1,6 +1,7 @@
 from models.habitacion import Habitacion
 from db import db ,cursor
 
+
 class HabitacionServices ():
 
     def agregarHabitacion(self, habitacion:Habitacion):

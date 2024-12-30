@@ -1,6 +1,7 @@
 from services.pacienteServices import PacienteServices
 from services.medicoServices import MedicoServices
 from services.citaServices import CitaServices
+from services.pacienteServices import PacienteServices
 from services.habitacionServices import HabitacionServices
 from services.historiaClinicaServices import HistoriaClinicaServices
 
@@ -359,13 +360,13 @@ def main():
         elif opcion == "2":
             gestionar_medicos()
         elif opcion == "3":
-            print("Gestión de Citas (en desarrollo).")
+            gestionar_citas()
         elif opcion == "4":
-            print("Gestión de Habitaciones (en desarrollo).")
+            gestionar_habitaciones()
         elif opcion == "5":
-            print("Gestión de Historias Clínicas (en desarrollo).")
+            gestionar_historias_clinicas()
         elif opcion == "0":
-            print("Saliendo del programa...")
+            print("Saliendo del sistema...")
             break
         else:
             print("Opción no válida. Intente nuevamente.")

@@ -1,7 +1,6 @@
 from models.paciente import Paciente
 from db import db ,cursor
-
-
+import sqlite3
 
 
 class PacienteServices ():

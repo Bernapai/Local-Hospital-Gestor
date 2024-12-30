@@ -1,5 +1,6 @@
 from models.medico import Medico
 from db import db ,cursor
+import sqlite3
 
 
 class MedicoServices ():
