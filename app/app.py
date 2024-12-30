@@ -154,7 +154,199 @@ def gestionar_medicos():
     elif opcion == "0":
         return menu_principal()
     
-    
+
+def gestionar_citas():
+    print("\n--- GESTIÓN DE CITAS ---")
+    print("1. Listar Citas")
+    print("2. Agregar Cita")
+    print("3. Buscar Cita por ID")
+    print("4. Buscar Cita por Fecha")
+    print("5. Buscar Cita por Paciente")
+    print("6. Buscar Cita por Médico")
+    print("7. Eliminar Cita")
+    print("8. Actualizar Cita")
+    print("0. Volver")
+
+    opcion = input("Seleccione una opción: ")
+    if opcion == "1":
+        citas = cita_service.obtenerCitas()
+        print("\nLista de Citas:")
+        for cita in citas:
+            print(cita)
+    elif opcion == "2":
+        id_paciente = int(input("Ingrese ID del paciente: "))
+        id_medico = int(input("Ingrese ID del médico: "))
+        fecha = input("Ingrese fecha de la cita (YYYY-MM-DD): ")
+        cita_service.agregarCita(id_paciente, id_medico, fecha)
+        print("Cita agregada exitosamente.")
+    elif opcion == "3":
+        id_cita = int(input("Ingrese ID de la cita: "))
+        cita = cita_service.obtenerCita(id_cita)
+        print(cita if cita else "Cita no encontrada.")
+    elif opcion == "4":
+        fecha = input("Ingrese fecha de la cita (YYYY-MM-DD): ")
+        citas = cita_service.obtenerCitasPorFecha(fecha)
+        print("\nLista de Citas para la fecha", fecha)
+        for cita in citas:
+            print(cita)
+    elif opcion == "5":
+        id_paciente = int(input("Ingrese ID del paciente: "))
+        citas = cita_service.obtenerCitasPorPaciente(id_paciente)
+        print("\nLista de Citas para el paciente", id_paciente)
+        for cita in citas:
+            print(cita)
+    elif opcion == "6":
+        id_medico = int(input("Ingrese ID del médico: "))
+        citas = cita_service.obtenerCitasPorMedico(id_medico)
+        print("\nLista de Citas para el médico", id_medico)
+        for cita in citas:
+            print(cita)
+    elif opcion == "7":
+        id_cita = int(input("Ingrese ID de la cita a eliminar: "))
+        cita_service.eliminarCita(id_cita)
+        print("Cita eliminada exitosamente.")
+    elif opcion == "8":
+        id_cita = int(input("Ingrese ID de la cita a actualizar: "))
+        id_paciente = int(input("Ingrese ID del paciente: "))
+        id_medico = int(input("Ingrese ID del médico: "))
+        fecha = input("Ingrese fecha de la cita (YYYY-MM-DD): ")
+        cita_service.actualizarCita(id_cita, id_paciente, id_medico, fecha)
+        print("Cita actualizada exitosamente.")
+    elif opcion == "0":
+        return menu_principal()
+
+
+def gestionar_habitaciones():
+    print("\n--- GESTIÓN DE HABITACIONES ---")
+    print("1. Listar Habitaciones")
+    print("2. Agregar Habitación")
+    print("3. Buscar Habitación por ID")
+    print("4. Buscar Habitación por Tipo")
+    print("5. Buscar Habitación por Numero")
+    print("6. Eliminar Habitación")
+    print("7. Actualizar Habitación")
+    print("0. Volver")
+
+    opcion = input("Seleccione una opción: ")
+    if opcion == "1":
+        habitaciones = habitacion_service.obtenerHabitaciones()
+        print("\nLista de Habitaciones:")
+        for habitacion in habitaciones:
+            print(habitacion)
+    elif opcion == "2":
+        numero = int(input("Ingrese número de la habitación: "))
+        tipo = input("Ingrese tipo de la habitación: ")
+        precio = float(input("Ingrese precio de la habitación: "))
+        habitacion_service.agregarHabitacion(numero, tipo, precio)
+        print("Habitación agregada exitosamente.")
+    elif opcion == "3":
+        id_habitacion = int(input("Ingrese ID de la habitación: "))
+        habitacion = habitacion_service.obtenerHabitacion(id_habitacion)
+        print(habitacion if habitacion else "Habitación no encontrada.")
+    elif opcion == "4":
+        tipo = input("Ingrese tipo de la habitación: ")
+        habitaciones = habitacion_service.obtenerHabitacionesPorTipo(tipo)
+        print("\nLista de Habitaciones de tipo", tipo)
+        for habitacion in habitaciones:
+            print(habitacion)
+    elif opcion == "5":
+        numero = int(input("Ingrese número de la habitación: "))
+        habitaciones = habitacion_service.obtenerHabitacionesPorNumero(numero)
+        print("\nLista de Habitaciones con número", numero)
+        for habitacion in habitaciones:
+            print(habitacion)
+    elif opcion == "6":
+        id_habitacion = int(input("Ingrese ID de la habitación a eliminar: "))
+        habitacion_service.eliminarHabitacion(id_habitacion)
+        print("Habitación eliminada exitosamente.")
+    elif opcion == "7":
+        id_habitacion = int(input("Ingrese ID de la habitación a actualizar: "))
+        numero = int(input("Ingrese número de la habitación: "))
+        tipo = input("Ingrese tipo de la habitación: ")
+        precio = float(input("Ingrese precio de la habitación: "))
+        habitacion_service.actualizarHabitacion(id_habitacion, numero, tipo, precio)
+        print("Habitación actualizada exitosamente.")
+    elif opcion == "0":
+        return menu_principal()
+
+
+def gestionar_historias_clinicas():
+    print("\n--- GESTIÓN DE HISTORIAS CLÍNICAS ---")
+    print("1. Listar Historias Clínicas")
+    print("2. Agregar Historia Clínica")
+    print("3. Buscar Historia Clínica por ID")
+    print("4. Buscar Historia Clínica por Paciente")
+    print("5. Buscar Historia Clínica por Médico")
+    print("6. Buscar Historia Clínica por Fecha")
+    print("7. Buscar Historia Clínica por Diagnóstico")
+    print("8. Buscar Historia Clínica por Tratamiento")
+    print("9. Eliminar Historia Clínica")
+    print("10. Actualizar Historia Clínica")
+    print("0. Volver")
+
+    opcion = input("Seleccione una opción: ")
+    if opcion == "1":
+        historias_clinicas = historia_clinica_service.obtenerHistoriasClinicas()
+        print("\nLista de Historias Clínicas:")
+        for historia_clinica in historias_clinicas:
+            print(historia_clinica)
+    elif opcion == "2":
+        id_paciente = int(input("Ingrese ID del paciente: "))
+        fecha = input("Ingrese fecha de la historia clínica (YYYY-MM-DD): ")
+        diagnostico = input("Ingrese diagnóstico: ")
+        tratamiento = input("Ingrese tratamiento: ")
+        id_medico = int(input("Ingrese ID del médico: "))
+        historia_clinica_service.agregarHistoriaClinica(id_paciente, fecha, diagnostico, tratamiento, id_medico)
+        print("Historia Clínica agregada exitosamente.")
+    elif opcion == "3":
+        id_historia_clinica = int(input("Ingrese ID de la historia clínica: "))
+        historia_clinica = historia_clinica_service.obtenerHistoriaClinica(id_historia_clinica)
+        print(historia_clinica if historia_clinica else "Historia Clínica no encontrada.")
+    elif opcion == "4":
+        id_paciente = int(input("Ingrese ID del paciente: "))
+        historias_clinicas = historia_clinica_service.obtenerHistoriasClinicasPorPaciente(id_paciente)
+        print("\nLista de Historias Clínicas para el paciente", id_paciente)
+        for historia_clinica in historias_clinicas:
+            print(historia_clinica)
+    elif opcion == "5":
+        id_medico = int(input("Ingrese ID del médico: "))
+        historias_clinicas = historia_clinica_service.obtenerHistoriasClinicasPorMedico(id_medico)
+        print("\nLista de Historias Clínicas para el médico", id_medico)
+        for historia_clinica in historias_clinicas:
+            print(historia_clinica)
+    elif opcion == "6":
+        fecha = input("Ingrese fecha de la historia clínica (YYYY-MM-DD): ")
+        historias_clinicas = historia_clinica_service.obtenerHistoriasClinicasPorFecha(fecha)
+        print("\nLista de Historias Clínicas para la fecha", fecha)
+        for historia_clinica in historias_clinicas:
+            print(historia_clinica)
+    elif opcion == "7":
+        diagnostico = input("Ingrese diagnóstico: ")
+        historias_clinicas = historia_clinica_service.obtenerHistoriasClinicasPorDiagnostico(diagnostico)
+        print("\nLista de Historias Clínicas con diagnóstico", diagnostico)
+        for historia_clinica in historias_clinicas:
+            print(historia_clinica)
+    elif opcion == "8":
+        tratamiento = input("Ingrese tratamiento: ")
+        historias_clinicas = historia_clinica_service.obtenerHistoriasClinicasPorTratamiento(tratamiento)
+        print("\nLista de Historias Clínicas con tratamiento", tratamiento)
+        for historia_clinica in historias_clinicas:
+            print(historia_clinica)
+    elif opcion == "9":
+        id_historia_clinica = int(input("Ingrese ID de la historia clínica a eliminar: "))
+        historia_clinica_service.eliminarHistoriaClinica(id_historia_clinica)
+        print("Historia Clínica eliminada exitosamente.")
+    elif opcion == "10":
+        id_historia_clinica = int(input("Ingrese ID de la historia clínica a actualizar: "))
+        id_paciente = int(input("Ingrese ID del paciente: "))
+        fecha = input("Ingrese fecha de la historia clínica (YYYY-MM-DD): ")
+        diagnostico = input("Ingrese diagnóstico: ")
+        tratamiento = input("Ingrese tratamiento: ")
+        id_medico = int(input("Ingrese ID del médico: "))
+        historia_clinica_service.actualizarHistoriaClinica(id_historia_clinica, id_paciente, fecha, diagnostico, tratamiento, id_medico)
+        print("Historia Clínica actualizada exitosamente.")
+    elif opcion == "0":
+        return menu_principal()
 
 
 def main():
