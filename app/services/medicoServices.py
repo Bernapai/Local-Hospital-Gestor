@@ -7,7 +7,7 @@ class MedicoServices ():
 
     def agregarMedico(self, medico:Medico):
         try:
-            cursor.execute("INSERT INTO medicos (nombre, apellido, especialidad) VALUES (?, ?, ?)", (medico.nombre, medico.apellido, medico.especialidad))
+            cursor.execute("INSERT INTO medicos (nombre, apellido, especialidad) VALUES (?, ?, ?)", (medico.get_nombre(), medico.get_apellido(), medico.get_especialidad()))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -41,14 +41,16 @@ class MedicoServices ():
             print(f"Error de base de datos: {e}")
             return False
 
-    def actualizarMedico(self, medico:Medico):
+    def actualizarMedico(self, id_medico, medico:Medico):
         try:
-            cursor.execute("UPDATE medicos SET nombre = ?, apellido = ?, especialidad = ? WHERE id_medico = ?", (medico.nombre, medico.apellido, medico.especialidad, medico.id_medico))
+            cursor.execute("UPDATE medicos SET nombre = ?, apellido = ?, especialidad = ? WHERE id_medico = ?", 
+                           (medico.get_nombre(), medico.get_apellido(), medico.get_especialidad(), id_medico))
             db.commit()
             return True
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
             return False
+
 
 
     def obtenerMedicosPorEspecialidad(self, especialidad):

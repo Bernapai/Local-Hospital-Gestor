@@ -34,7 +34,6 @@ class Cita ():
     
     def get_medico_id(self):
         return self.__medico_id
-
     def get_fecha(self):
         return self.__fecha
 

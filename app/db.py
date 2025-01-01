@@ -13,7 +13,7 @@ except sqlite3.Error as e:
     # Capturar errores relacionados con SQLite y mostrar el mensaje de error
     print(f"Error de base de datos: {e}")
 
-finally:
+
     # Cerrar el cursor y la conexión después de usarla
     if cursor:
         cursor.close()

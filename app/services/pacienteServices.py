@@ -7,7 +7,7 @@ class PacienteServices ():
 
     def agregarPaciente(self, paciente:Paciente):
         try:
-            cursor.execute("INSERT INTO pacientes (nombre, apellido, dni, direccion, telefono) VALUES (?, ?, ?, ?, ?)", (paciente.nombre, paciente.apellido, paciente.dni, paciente.direccion, paciente.telefono))
+            cursor.execute("INSERT INTO pacientes (nombre, apellido, dni, direccion, telefono) VALUES (?, ?, ?, ?, ?)", (paciente.get_nombre(), paciente.get_apellido(), paciente.get_dni(), paciente.get_direccion(), paciente.get_telefono()))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -41,9 +41,10 @@ class PacienteServices ():
             print(f"Error de base de datos: {e}")
             return False
 
-    def actualizarPaciente(self, paciente:Paciente):
+    def actualizarPaciente(self, id_paciente, paciente:Paciente):
         try:
-            cursor.execute("UPDATE pacientes SET nombre = ?, apellido = ?, dni = ?, direccion = ?, telefono = ? WHERE id_paciente = ?", (paciente.nombre, paciente.apellido, paciente.dni, paciente.direccion, paciente.telefono, paciente.id_paciente))
+            cursor.execute("UPDATE pacientes SET nombre = ?, apellido = ?, dni = ?, direccion = ?, telefono = ? WHERE id_paciente = ?", 
+                           (paciente.get_nombre(), paciente.get_apellido(), paciente.get_dni(), paciente.get_direccion(), paciente.get_telefono(), id_paciente))
             db.commit()
             return True
         except sqlite3.Error as e:

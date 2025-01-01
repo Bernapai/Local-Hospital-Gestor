@@ -6,7 +6,7 @@ import sqlite3
 class HistoriaClinicaServices ():
     def agregarHistoriaClinica(self, historiaClinica:HistoriaClinica):
         try:
-            cursor.execute("INSERT INTO historias_clinicas (id_paciente, fecha, diagnostico, tratamiento, id_medico) VALUES (?, ?, ?, ?, ?)", (historiaClinica.id_paciente, historiaClinica.fecha, historiaClinica.diagnostico, historiaClinica.tratamiento, historiaClinica.id_medico))
+            cursor.execute("INSERT INTO historias_clinicas (id_paciente, fecha, diagnostico, tratamiento, id_medico) VALUES (?, ?, ?, ?, ?)", (historiaClinica.get_paciente_id(), historiaClinica.get_fecha(), historiaClinica.get_diagnostico(), historiaClinica.get_tratamiento(), historiaClinica.get_medico_id()))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -40,14 +40,16 @@ class HistoriaClinicaServices ():
             print(f"Error de base de datos: {e}")
             return False
 
-    def actualizarHistoriaClinica(self, historiaClinica:HistoriaClinica):
+   def actualizarHistoriaClinica(self, id_historia_clinica, historiaClinica:HistoriaClinica):
         try:
-            cursor.execute("UPDATE historias_clinicas SET id_paciente = ?, fecha = ?, diagnostico = ?, tratamiento = ?, id_medico = ? WHERE id_historia_clinica = ?", (historiaClinica.id_paciente, historiaClinica.fecha, historiaClinica.diagnostico, historiaClinica.tratamiento, historiaClinica.id_medico, historiaClinica.id_historia_clinica))
+            cursor.execute("UPDATE historias_clinicas SET id_paciente = ?, fecha = ?, diagnostico = ?, tratamiento = ?, id_medico = ? WHERE id_historia_clinica = ?", 
+                       (historiaClinica.get_paciente_id(), historiaClinica.get_fecha(), historiaClinica.get_diagnostico(), historiaClinica.get_tratamiento(), historiaClinica.get_medico_id(), id_historia_clinica))
             db.commit()
             return True
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
             return False
+
 
     def obtenerHistoriasClinicasPorPaciente(self, id_paciente):
         try:

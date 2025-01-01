@@ -5,13 +5,13 @@ from db import db ,cursor
 class CitaServices ():
   
   def agregarCita(self, cita:Cita):
-    try:
-      cursor.execute("INSERT INTO citas (id_paciente, id_medico, fecha, hora) VALUES (?, ?, ?, ?)", (cita.id_paciente, cita.id_medico, cita.fecha, cita.hora))
-      db.commit()
-      return True
-    except sqlite3.Error as e:
-      print(f"Error de base de datos: {e}")
-      return False
+        try:
+            cursor.execute("INSERT INTO citas (id_paciente, id_medico, fecha, hora) VALUES (?, ?, ?, ?)", (cita.get_paciente_id(), cita.get_medico_id(), cita.get_fecha(), cita.get_fecha()))
+            db.commit()
+            return True
+       except sqlite3.Error as e:
+            print(f"Error de base de datos: {e}")
+            return False
     
     def obtenerCitas(self):
         try:
@@ -41,14 +41,16 @@ class CitaServices ():
             print(f"Error de base de datos: {e}")
             return False
 
-    def actualizarCita(self, cita:Cita):
+    def actualizarCita(self, id_cita, cita:Cita):
         try:
-            cursor.execute("UPDATE citas SET id_paciente = ?, id_medico = ?, fecha = ?, hora = ? WHERE id_cita = ?", (cita.id_paciente, cita.id_medico, cita.fecha, cita.hora, cita.id_cita))
+            cursor.execute("UPDATE citas SET id_paciente = ?, id_medico = ?, fecha = ?, hora = ? WHERE id_cita = ?", 
+                       (cita.get_paciente_id(), cita.get_medico_id(), cita.get_fecha(), cita.get_hora(), id_cita))
             db.commit()
             return True
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
             return False
+
 
     def obtenerCitasPorPaciente(self, id_paciente):
         try:
