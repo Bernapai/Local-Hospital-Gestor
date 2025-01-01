@@ -9,7 +9,7 @@ class CitaServices ():
             cursor.execute("INSERT INTO citas (id_paciente, id_medico, fecha, hora) VALUES (?, ?, ?, ?)", (cita.get_paciente_id(), cita.get_medico_id(), cita.get_fecha(), cita.get_fecha()))
             db.commit()
             return True
-       except sqlite3.Error as e:
+        except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
             return False
     

@@ -46,7 +46,8 @@ def gestionar_pacientes():
         dni = input("Ingrese DNI del paciente: ")
         direccion = input("Ingrese dirección del paciente: ")
         telefono = input("Ingrese teléfono del paciente: ")
-        paciente_service.agregarPaciente(nombre, apellido, dni, direccion, telefono)
+        paciente = (nombre, apellido, dni, direccion, telefono)
+        paciente_service.agregarPaciente(paciente)
         print("Paciente agregado exitosamente.")
     elif opcion == "3":
         id_paciente = int(input("Ingrese ID del paciente: "))
@@ -117,7 +118,8 @@ def gestionar_medicos():
         nombre = input("Ingrese nombre del médico: ")
         apellido = input("Ingrese apellido del médico: ")
         especialidad = input("Ingrese especialidad: ")
-        medico_service.agregarMedico(nombre, apellido, especialidad)
+        medico = (nombre, apellido, especialidad)
+        medico_service.agregarMedico(medico)
         print("Médico agregado exitosamente.")
     elif opcion == "3":
         id_medico = int(input("Ingrese ID del médico: "))
@@ -178,7 +180,8 @@ def gestionar_citas():
         id_paciente = int(input("Ingrese ID del paciente: "))
         id_medico = int(input("Ingrese ID del médico: "))
         fecha = input("Ingrese fecha de la cita (YYYY-MM-DD): ")
-        cita_service.agregarCita(id_paciente, id_medico, fecha)
+        cita = (id_paciente, id_medico, fecha)
+        cita_service.agregarCita(cita)
         print("Cita agregada exitosamente.")
     elif opcion == "3":
         id_cita = int(input("Ingrese ID de la cita: "))
@@ -237,8 +240,10 @@ def gestionar_habitaciones():
     elif opcion == "2":
         numero = int(input("Ingrese número de la habitación: "))
         tipo = input("Ingrese tipo de la habitación: ")
+        capacidad = int(input("Ingrese capacidad de la habitación: "))
         precio = float(input("Ingrese precio de la habitación: "))
-        habitacion_service.agregarHabitacion(numero, tipo, precio)
+        habitacion = (numero, tipo, capacidad, precio)
+        habitacion_service.agregarHabitacion(habitacion)
         print("Habitación agregada exitosamente.")
     elif opcion == "3":
         id_habitacion = int(input("Ingrese ID de la habitación: "))
@@ -297,7 +302,8 @@ def gestionar_historias_clinicas():
         diagnostico = input("Ingrese diagnóstico: ")
         tratamiento = input("Ingrese tratamiento: ")
         id_medico = int(input("Ingrese ID del médico: "))
-        historia_clinica_service.agregarHistoriaClinica(id_paciente, fecha, diagnostico, tratamiento, id_medico)
+        historia_clinica = (id_paciente, fecha, diagnostico, tratamiento, id_medico)
+        historia_clinica_service.agregarHistoriaClinica(historia_clinica)
         print("Historia Clínica agregada exitosamente.")
     elif opcion == "3":
         id_historia_clinica = int(input("Ingrese ID de la historia clínica: "))
