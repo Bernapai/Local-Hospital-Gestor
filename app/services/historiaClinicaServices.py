@@ -40,7 +40,7 @@ class HistoriaClinicaServices ():
             print(f"Error de base de datos: {e}")
             return False
 
-   def actualizarHistoriaClinica(self, id_historia_clinica, historiaClinica:HistoriaClinica):
+    def actualizarHistoriaClinica(self, id_historia_clinica, historiaClinica:HistoriaClinica):
         try:
             cursor.execute("UPDATE historias_clinicas SET id_paciente = ?, fecha = ?, diagnostico = ?, tratamiento = ?, id_medico = ? WHERE id_historia_clinica = ?", 
                        (historiaClinica.get_paciente_id(), historiaClinica.get_fecha(), historiaClinica.get_diagnostico(), historiaClinica.get_tratamiento(), historiaClinica.get_medico_id(), id_historia_clinica))

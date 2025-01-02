@@ -1,13 +1,13 @@
 
 class Paciente:
     def __init__(self, nombre : str, apellido : str, edad : int, direccion : str, enfermedad : str):
-        if not isistance (nombre, str):
+        if not isinstance (nombre, str):
             raise ValueError(f'Error')
-        if not isistance (edad, int) or edad < 0:
+        if not isinstance (edad, int) or edad < 0:
             raise ValueError(f'Error')
-        if not isistance (direccion, char):
+        if not isinstance (direccion, str):
             raise ValueError(f'Error')
-        if not isistance (enfermedad, str):
+        if not isinstance (enfermedad, str):
             raise ValueError(f'Error')
 
         self.__nombre = nombre

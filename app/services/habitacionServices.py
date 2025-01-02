@@ -6,7 +6,7 @@ class HabitacionServices ():
 
     def agregarHabitacion(self, habitacion:Habitacion):
         try:
-            cursor.execute("INSERT INTO habitaciones (numero, tipo,capacidad, precio) VALUES (?, ?, ?, ?)", (habitacion.get_numero(), habitacion.get_tipo(), habitacion.get_capacidad(), habitacion.get_precio()))
+            cursor.execute("INSERT INTO habitaciones (numero, tipo,capacidad, estado) VALUES (?, ?, ?, ?)", (habitacion.get_numero(), habitacion.get_tipo(), habitacion.get_capacidad(), habitacion.get_estado()))
             db.commit()
             return True
         except sqlite3.Error as e:

@@ -7,7 +7,7 @@ class PacienteServices ():
 
     def agregarPaciente(self, paciente:Paciente):
         try:
-            cursor.execute("INSERT INTO pacientes (nombre, apellido, dni, direccion, telefono) VALUES (?, ?, ?, ?, ?)", (paciente.get_nombre(), paciente.get_apellido(), paciente.get_dni(), paciente.get_direccion(), paciente.get_telefono()))
+            cursor.execute("INSERT INTO pacientes (nombre, apellido, edad direccion, enfermedad) VALUES (?, ?, ?, ?, ?)", (paciente.get_nombre(), paciente.get_apellido(), paciente.get_edad(), paciente.get_direccion(), paciente.get_enfermedad()))
             db.commit()
             return True
         except sqlite3.Error as e:

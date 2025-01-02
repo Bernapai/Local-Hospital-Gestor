@@ -4,7 +4,7 @@ from db import db ,cursor
 
 class CitaServices ():
   
-  def agregarCita(self, cita:Cita):
+    def agregarCita(self, cita:Cita):
         try:
             cursor.execute("INSERT INTO citas (id_paciente, id_medico, fecha, hora) VALUES (?, ?, ?, ?)", (cita.get_paciente_id(), cita.get_medico_id(), cita.get_fecha(), cita.get_fecha()))
             db.commit()
