@@ -20,7 +20,7 @@ class HabitacionServices ():
             return habitaciones
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
     
     def obtenerHabitacion(self, id_habitacion):
         try:
@@ -29,7 +29,7 @@ class HabitacionServices ():
             return habitacion
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
     
     def eliminarHabitacion (self, id_habitacion):
         try:
@@ -59,7 +59,7 @@ class HabitacionServices ():
             return habitaciones
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
 
     def obtenerHabitacionesPorPrecio(self, precio):
@@ -69,7 +69,7 @@ class HabitacionServices ():
             return habitaciones
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerHabitacionesPorNumero(self, numero):
         try:
@@ -78,7 +78,7 @@ class HabitacionServices ():
             return habitaciones
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerHabitacionesPorTipoYPrecio(self, tipo, precio):
         try:
@@ -87,7 +87,7 @@ class HabitacionServices ():
             return habitaciones
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
             
 

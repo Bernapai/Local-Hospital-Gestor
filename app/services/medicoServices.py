@@ -21,7 +21,7 @@ class MedicoServices ():
             return medicos
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerMedico(self, id_medico):
         try:
@@ -30,7 +30,7 @@ class MedicoServices ():
             return medico
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def eliminarMedico(self, id_medico):
         try:
@@ -60,7 +60,7 @@ class MedicoServices ():
             return medicos
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerMedicosPorNombre(self, nombre):
         try:
@@ -69,7 +69,7 @@ class MedicoServices ():
             return medicos
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerMedicosPorApellido(self, apellido):
         try:
@@ -78,7 +78,7 @@ class MedicoServices ():
             return medicos
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerMedicosPorNombreYApellido(self, nombre, apellido):
         try:
@@ -87,6 +87,6 @@ class MedicoServices ():
             return medicos
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     

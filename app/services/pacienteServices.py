@@ -7,7 +7,7 @@ class PacienteServices ():
 
     def agregarPaciente(self, paciente:Paciente):
         try:
-            cursor.execute("INSERT INTO pacientes (nombre, apellido, edad direccion, enfermedad) VALUES (?, ?, ?, ?, ?)", (paciente.get_nombre(), paciente.get_apellido(), paciente.get_edad(), paciente.get_direccion(), paciente.get_enfermedad()))
+            cursor.execute("INSERT INTO pacientes (nombre, apellido, edad, direccion, enfermedad) VALUES (?, ?, ?, ?, ?)", (paciente.get_nombre(), paciente.get_apellido(), paciente.get_edad(), paciente.get_direccion(), paciente.get_enfermedad()))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -21,7 +21,7 @@ class PacienteServices ():
             return pacientes
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerPaciente(self, id_paciente):
         try:
@@ -30,7 +30,7 @@ class PacienteServices ():
             return paciente
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def eliminarPaciente(self, id_paciente):
         try:
@@ -39,7 +39,7 @@ class PacienteServices ():
             return True
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def actualizarPaciente(self, id_paciente, paciente:Paciente):
         try:

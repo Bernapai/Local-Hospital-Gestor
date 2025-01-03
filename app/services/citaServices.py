@@ -20,7 +20,7 @@ class CitaServices ():
             return citas
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
         
     def obtenerCita(self, id_cita):
@@ -30,7 +30,7 @@ class CitaServices ():
             return cita
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def eliminarCita(self, id_cita):
         try:
@@ -59,7 +59,7 @@ class CitaServices ():
             return citas
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerCitasPorMedico(self, id_medico):
         try:
@@ -68,7 +68,7 @@ class CitaServices ():
             return citas
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerCitasPorFecha(self, fecha):
         try:
@@ -77,7 +77,7 @@ class CitaServices ():
             return citas
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     def obtenerCitasPorHora(self, hora):
         try:
@@ -86,6 +86,6 @@ class CitaServices ():
             return citas
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
-            return False
+            return []
 
     
