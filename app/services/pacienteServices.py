@@ -23,28 +23,28 @@ class PacienteServices ():
             print(f"Error de base de datos: {e}")
             return []
 
-    def obtenerPaciente(self, id_paciente):
+    def obtenerPaciente(self, id):
         try:
-            cursor.execute("SELECT * FROM pacientes WHERE id_paciente = ?", (id_paciente,))
+            cursor.execute("SELECT * FROM pacientes WHERE id = ?", (id,))
             paciente = cursor.fetchone()
             return paciente
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
             return []
 
-    def eliminarPaciente(self, id_paciente):
+    def eliminarPaciente(self, id):
         try:
-            cursor.execute("DELETE FROM pacientes WHERE id_paciente = ?", (id_paciente,))
+            cursor.execute("DELETE FROM pacientes WHERE id = ?", (id,))
             db.commit()
             return True
         except sqlite3.Error as e:
             print(f"Error de base de datos: {e}")
             return []
 
-    def actualizarPaciente(self, id_paciente, paciente:Paciente):
+    def actualizarPaciente(self, id, paciente:Paciente):
         try:
-            cursor.execute("UPDATE pacientes SET nombre = ?, apellido = ?, dni = ?, direccion = ?, telefono = ? WHERE id_paciente = ?", 
-                           (paciente.get_nombre(), paciente.get_apellido(), paciente.get_dni(), paciente.get_direccion(), paciente.get_telefono(), id_paciente))
+            cursor.execute("UPDATE pacientes SET nombre = ?, apellido = ?, edad = ?, direccion = ?, enfermedad= ? WHERE id = ?", 
+                           (paciente.get_nombre(), paciente.get_apellido(), paciente.get_edad(), paciente.get_direccion(), paciente.get_enfermedad(), id))
             db.commit()
             return True
         except sqlite3.Error as e:

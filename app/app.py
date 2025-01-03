@@ -53,8 +53,8 @@ def gestionar_pacientes():
         paciente_service.agregarPaciente(paciente)
         print("Paciente agregado exitosamente.")
     elif opcion == "3":
-        id_paciente = int(input("Ingrese ID del paciente: "))
-        paciente = paciente_service.obtenerPaciente(id_paciente)
+        id = int(input("Ingrese ID del paciente: "))
+        paciente = paciente_service.obtenerPaciente(id)
         print(paciente if paciente else "Paciente no encontrado.")
     elif opcion == "4":
         nombre = input("Ingrese nombre del paciente: ")
@@ -88,10 +88,10 @@ def gestionar_pacientes():
         id_paciente = int(input("Ingrese ID del paciente a actualizar: "))
         nombre = input("Ingrese nombre del paciente: ")
         apellido = input("Ingrese apellido del paciente: ")
-        dni = input("Ingrese DNI del paciente: ")
+        edad = int(input("Ingrese edad del paciente: "))
         direccion = input("Ingrese dirección del paciente: ")
-        telefono = input("Ingrese teléfono del paciente: ")
-        paciente_service.actualizarPaciente(id_paciente, nombre, apellido, dni, direccion, telefono)
+        enfermedad = input("Ingrese enfermedad del paciente: ")
+        paciente_service.actualizarPaciente(id_paciente, nombre, apellido, edad, direccion, enfermedad)
         print("Paciente actualizado exitosamente.")
     elif opcion == "0":
         return menu_principal()
@@ -131,7 +131,7 @@ def gestionar_medicos():
         print(medico if medico else "Médico no encontrado.")
     elif opcion == "4":
         especialidad = input("Ingrese especialidad del médico: ")
-        medicos = medico_service.obtenerMedicoPorEspecialidad(especialidad)
+        medicos = medico_service.obtenerMedicosPorEspecialidad(especialidad)
         print("\nLista de Médicos con especialidad", especialidad)
         for medico in medicos:
             print(medico)
