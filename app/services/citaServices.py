@@ -25,7 +25,7 @@ class CitaServices ():
         
     def obtenerCita(self, id_cita):
         try:
-            cursor.execute("SELECT * FROM citas WHERE id_cita = ?", (id_cita,))
+            cursor.execute("SELECT * FROM citas WHERE id = ?", (id_cita,))
             cita = cursor.fetchone()
             return cita
         except sqlite3.Error as e:
@@ -34,7 +34,7 @@ class CitaServices ():
 
     def eliminarCita(self, id_cita):
         try:
-            cursor.execute("DELETE FROM citas WHERE id_cita = ?", (id_cita,))
+            cursor.execute("DELETE FROM citas WHERE id = ?", (id_cita,))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -43,7 +43,7 @@ class CitaServices ():
 
     def actualizarCita(self, id_cita, cita:Cita):
         try:
-            cursor.execute("UPDATE citas SET id_paciente = ?, id_medico = ?, fecha = ?, hora = ? WHERE id_cita = ?", 
+            cursor.execute("UPDATE citas SET id_paciente = ?, id_medico = ?, fecha = ?, hora = ? WHERE id = ?", 
                        (cita.get_paciente_id(), cita.get_medico_id(), cita.get_fecha(), cita.get_hora(), id_cita))
             db.commit()
             return True

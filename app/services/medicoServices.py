@@ -25,7 +25,7 @@ class MedicoServices ():
 
     def obtenerMedico(self, id_medico):
         try:
-            cursor.execute("SELECT * FROM medicos WHERE id_medico = ?", (id_medico,))
+            cursor.execute("SELECT * FROM medicos WHERE id = ?", (id_medico,))
             medico = cursor.fetchone()
             return medico
         except sqlite3.Error as e:
@@ -34,7 +34,7 @@ class MedicoServices ():
 
     def eliminarMedico(self, id_medico):
         try:
-            cursor.execute("DELETE FROM medicos WHERE id_medico = ?", (id_medico,))
+            cursor.execute("DELETE FROM medicos WHERE id = ?", (id_medico,))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -43,7 +43,7 @@ class MedicoServices ():
 
     def actualizarMedico(self, id_medico, medico:Medico):
         try:
-            cursor.execute("UPDATE medicos SET nombre = ?, apellido = ?, especialidad = ? WHERE id_medico = ?", 
+            cursor.execute("UPDATE medicos SET nombre = ?, apellido = ?, especialidad = ? WHERE id = ?", 
                            (medico.get_nombre(), medico.get_apellido(), medico.get_especialidad(), id_medico))
             db.commit()
             return True

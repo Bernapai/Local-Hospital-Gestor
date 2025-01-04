@@ -24,7 +24,7 @@ class HabitacionServices ():
     
     def obtenerHabitacion(self, id_habitacion):
         try:
-            cursor.execute("SELECT * FROM habitaciones WHERE id_habitacion = ?", (id_habitacion,))
+            cursor.execute("SELECT * FROM habitaciones WHERE id = ?", (id_habitacion,))
             habitacion = cursor.fetchone()
             return habitacion
         except sqlite3.Error as e:
@@ -33,7 +33,7 @@ class HabitacionServices ():
     
     def eliminarHabitacion (self, id_habitacion):
         try:
-            cursor.execute("DELETE FROM habitaciones WHERE id_habitacion = ?", (id_habitacion,))
+            cursor.execute("DELETE FROM habitaciones WHERE id = ?", (id_habitacion,))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -43,7 +43,7 @@ class HabitacionServices ():
 
     def actualizarHabitacion(self, id_habitacion, habitacion:Habitacion):
         try:
-            cursor.execute("UPDATE habitaciones SET numero = ?, tipo = ?, capacidad = ?, precio = ? WHERE id_habitacion = ?", 
+            cursor.execute("UPDATE habitaciones SET numero = ?, tipo = ?, capacidad = ?, precio = ? WHERE id = ?", 
                        (habitacion.get_numero(), habitacion.get_tipo(), habitacion.get_capacidad(), habitacion.get_precio(), id_habitacion))
             db.commit()
             return True

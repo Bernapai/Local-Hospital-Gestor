@@ -24,7 +24,7 @@ class HistoriaClinicaServices ():
 
     def obtenerHistoriaClinica(self, id_historia_clinica):
         try:
-            cursor.execute("SELECT * FROM historial_clinico WHERE id_historia_clinica = ?", (id_historia_clinica,))
+            cursor.execute("SELECT * FROM historial_clinico WHERE id = ?", (id_historia_clinica,))
             historia_clinica = cursor.fetchone()
             return historia_clinica
         except sqlite3.Error as e:
@@ -33,7 +33,7 @@ class HistoriaClinicaServices ():
 
     def eliminarHistoriaClinica(self, id_historia_clinica):
         try:
-            cursor.execute("DELETE FROM historial_clinico WHERE id_historia_clinica = ?", (id_historia_clinica,))
+            cursor.execute("DELETE FROM historial_clinico WHERE id = ?", (id_historia_clinica,))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -42,7 +42,7 @@ class HistoriaClinicaServices ():
 
     def actualizarHistoriaClinica(self, id_historia_clinica, historiaClinica:HistoriaClinica):
         try:
-            cursor.execute("UPDATE historial_clinico SET id_paciente = ?, fecha = ?, diagnostico = ?, tratamiento = ?, id_medico = ? WHERE id_historia_clinica = ?", 
+            cursor.execute("UPDATE historial_clinico SET id_paciente = ?, fecha = ?, diagnostico = ?, tratamiento = ?, id_medico = ? WHERE id = ?", 
                        (historiaClinica.get_paciente_id(), historiaClinica.get_fecha(), historiaClinica.get_diagnostico(), historiaClinica.get_tratamiento(), historiaClinica.get_medico_id(), id_historia_clinica))
             db.commit()
             return True
