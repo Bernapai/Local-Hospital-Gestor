@@ -22,9 +22,9 @@ class HistoriaClinicaServices ():
             print(f"Error de base de datos: {e}")
             return []
 
-    def obtenerHistoriaClinica(self, id_historia_clinica):
+    def obtenerHistoriaClinica(self, id):
         try:
-            cursor.execute("SELECT * FROM historial_clinico WHERE id = ?", (id_historia_clinica,))
+            cursor.execute("SELECT * FROM historial_clinico WHERE id = ?", (id,))
             historia_clinica = cursor.fetchone()
             return historia_clinica
         except sqlite3.Error as e:

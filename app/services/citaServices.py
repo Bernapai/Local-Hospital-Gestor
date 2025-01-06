@@ -23,9 +23,9 @@ class CitaServices ():
             return []
 
         
-    def obtenerCita(self, id_cita):
+    def obtenerCita(self, id):
         try:
-            cursor.execute("SELECT * FROM citas WHERE id = ?", (id_cita,))
+            cursor.execute("SELECT * FROM citas WHERE id = ?", (id,))
             cita = cursor.fetchone()
             return cita
         except sqlite3.Error as e:

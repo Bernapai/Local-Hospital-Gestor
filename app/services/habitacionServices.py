@@ -22,9 +22,9 @@ class HabitacionServices ():
             print(f"Error de base de datos: {e}")
             return []
     
-    def obtenerHabitacion(self, id_habitacion):
+    def obtenerHabitacion(self, id):
         try:
-            cursor.execute("SELECT * FROM habitaciones WHERE id = ?", (id_habitacion,))
+            cursor.execute("SELECT * FROM habitaciones WHERE id = ?", (id,))
             habitacion = cursor.fetchone()
             return habitacion
         except sqlite3.Error as e:

@@ -23,9 +23,9 @@ class MedicoServices ():
             print(f"Error de base de datos: {e}")
             return []
 
-    def obtenerMedico(self, id_medico):
+    def obtenerMedico(self, id):
         try:
-            cursor.execute("SELECT * FROM medicos WHERE id = ?", (id_medico,))
+            cursor.execute("SELECT * FROM medicos WHERE id = ?", (id,))
             medico = cursor.fetchone()
             return medico
         except sqlite3.Error as e:
