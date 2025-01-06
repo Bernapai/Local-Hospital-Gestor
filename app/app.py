@@ -246,8 +246,8 @@ def gestionar_habitaciones():
         numero = int(input("Ingrese número de la habitación: "))
         tipo = input("Ingrese tipo de la habitación: ")
         capacidad = int(input("Ingrese capacidad de la habitación: "))
-        precio = float(input("Ingrese precio de la habitación: "))
-        habitacion = Habitacion(numero, tipo, capacidad, precio)
+        estado = input("Ingrese estado de la habitación: ")
+        habitacion = Habitacion(numero, tipo, capacidad, estado)
         habitacion_service.agregarHabitacion(habitacion)
         print("Habitación agregada exitosamente.")
     elif opcion == "3":

@@ -1,11 +1,11 @@
 
 class Habitacion ():
-    def __init__(self, numero:int, tipo :str, capacidad:str , estado:str):
+    def __init__(self, numero:int, tipo :str, capacidad:int , estado:str):
         if not isinstance (numero, int) or numero < 0:
             raise ValueError(f'Error')
         if not isinstance (tipo, str):
             raise ValueError(f'Error')
-        if not isinstance (capacidad, str):
+        if not isinstance (capacidad, int) or capacidad < 0:
             raise ValueError(f'Error')
         if not isinstance (estado, str):
             raise ValueError(f'Error')

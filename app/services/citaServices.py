@@ -1,6 +1,6 @@
 from models.cita import Cita
 from db import db ,cursor
-
+import sqlite3
 
 class CitaServices ():
   
