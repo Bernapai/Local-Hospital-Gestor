@@ -184,7 +184,8 @@ def gestionar_citas():
         id_paciente = int(input("Ingrese ID del paciente: "))
         id_medico = int(input("Ingrese ID del médico: "))
         fecha = input("Ingrese fecha de la cita (YYYY-MM-DD): ")
-        cita = Cita(id_paciente, id_medico, fecha)
+        hora = input("Ingrese hora de la cita (HH:MM): ")
+        cita = Cita(id_paciente, id_medico, fecha , hora)
         cita_service.agregarCita(cita)
         print("Cita agregada exitosamente.")
     elif opcion == "3":
