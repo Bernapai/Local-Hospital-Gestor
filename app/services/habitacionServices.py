@@ -43,8 +43,8 @@ class HabitacionServices ():
 
     def actualizarHabitacion(self, id_habitacion, habitacion:Habitacion):
         try:
-            cursor.execute("UPDATE habitaciones SET numero = ?, tipo = ?, capacidad = ?, precio = ? WHERE id = ?", 
-                       (habitacion.get_numero(), habitacion.get_tipo(), habitacion.get_capacidad(), habitacion.get_precio(), id_habitacion))
+            cursor.execute("UPDATE habitaciones SET numero = ?, tipo = ?, capacidad = ?, estado = ? WHERE id = ?", 
+                       (habitacion.get_numero(), habitacion.get_tipo(), habitacion.get_capacidad(), habitacion.etado(), id_habitacion))
             db.commit()
             return True
         except sqlite3.Error as e:

@@ -274,8 +274,8 @@ def gestionar_habitaciones():
         id_habitacion = int(input("Ingrese ID de la habitación a actualizar: "))
         numero = int(input("Ingrese número de la habitación: "))
         tipo = input("Ingrese tipo de la habitación: ")
-        precio = float(input("Ingrese precio de la habitación: "))
-        habitacion_service.actualizarHabitacion(id_habitacion, numero, tipo, precio)
+        estado = input("Ingrese estado de la habitación: ")
+        habitacion_service.actualizarHabitacion(id_habitacion, numero, tipo, estado)
         print("Habitación actualizada exitosamente.")
     elif opcion == "0":
         return menu_principal()
@@ -302,12 +302,12 @@ def gestionar_historias_clinicas():
         for historia_clinica in historias_clinicas:
             print(historia_clinica)
     elif opcion == "2":
-        id_paciente = int(input("Ingrese ID del paciente: "))
+        paciente_id = int(input("Ingrese ID del paciente: "))
         fecha = input("Ingrese fecha de la historia clínica (YYYY-MM-DD): ")
         diagnostico = input("Ingrese diagnóstico: ")
         tratamiento = input("Ingrese tratamiento: ")
-        id_medico = int(input("Ingrese ID del médico: "))
-        historia_clinica = HistoriaClinica(id_paciente, fecha, diagnostico, tratamiento, id_medico)
+        medico_id = int(input("Ingrese ID del médico: "))
+        historia_clinica = HistoriaClinica(paciente_id, fecha, diagnostico, tratamiento, medico_id)
         historia_clinica_service.agregarHistoriaClinica(historia_clinica)
         print("Historia Clínica agregada exitosamente.")
     elif opcion == "3":

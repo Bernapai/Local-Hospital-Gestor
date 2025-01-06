@@ -6,7 +6,7 @@ import sqlite3
 class HistoriaClinicaServices ():
     def agregarHistoriaClinica(self, historiaClinica:HistoriaClinica):
         try:
-            cursor.execute("INSERT INTO historial_clinico (id_paciente, fecha, diagnostico, tratamiento, id_medico) VALUES (?, ?, ?, ?, ?)", (historiaClinica.get_paciente_id(), historiaClinica.get_fecha(), historiaClinica.get_diagnostico(), historiaClinica.get_tratamiento(), historiaClinica.get_medico_id()))
+            cursor.execute("INSERT INTO historial_clinico (paciente_id, fecha, diagnostico, tratamiento, medico_id) VALUES (?, ?, ?, ?, ?)", (historiaClinica.get_paciente_id(), historiaClinica.get_fecha(), historiaClinica.get_diagnostico(), historiaClinica.get_tratamiento(), historiaClinica.get_medico_id()))
             db.commit()
             return True
         except sqlite3.Error as e:
@@ -42,7 +42,7 @@ class HistoriaClinicaServices ():
 
     def actualizarHistoriaClinica(self, id_historia_clinica, historiaClinica:HistoriaClinica):
         try:
-            cursor.execute("UPDATE historial_clinico SET id_paciente = ?, fecha = ?, diagnostico = ?, tratamiento = ?, id_medico = ? WHERE id = ?", 
+            cursor.execute("UPDATE historial_clinico SET paciente_id = ?, fecha = ?, diagnostico = ?, tratamiento = ?, id_medico = ? WHERE id = ?", 
                        (historiaClinica.get_paciente_id(), historiaClinica.get_fecha(), historiaClinica.get_diagnostico(), historiaClinica.get_tratamiento(), historiaClinica.get_medico_id(), id_historia_clinica))
             db.commit()
             return True
@@ -53,7 +53,7 @@ class HistoriaClinicaServices ():
 
     def obtenerHistoriasClinicasPorPaciente(self, id_paciente):
         try:
-            cursor.execute("SELECT * FROM historial_clinico WHERE id_paciente = ?", (id_paciente,))
+            cursor.execute("SELECT * FROM historial_clinico WHERE paciente_id = ?", (id_paciente,))
             historial_clinico = cursor.fetchall()
             return historias_clinicas
         except sqlite3.Error as e:
