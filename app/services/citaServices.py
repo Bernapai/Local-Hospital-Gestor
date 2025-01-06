@@ -32,9 +32,9 @@ class CitaServices ():
             print(f"Error de base de datos: {e}")
             return []
 
-    def eliminarCita(self, id_cita):
+    def eliminarCita(self, id):
         try:
-            cursor.execute("DELETE FROM citas WHERE id = ?", (id_cita,))
+            cursor.execute("DELETE FROM citas WHERE id = ?", (id,))
             db.commit()
             return True
         except sqlite3.Error as e:

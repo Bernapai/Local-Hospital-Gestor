@@ -32,9 +32,9 @@ class MedicoServices ():
             print(f"Error de base de datos: {e}")
             return []
 
-    def eliminarMedico(self, id_medico):
+    def eliminarMedico(self, id):
         try:
-            cursor.execute("DELETE FROM medicos WHERE id = ?", (id_medico,))
+            cursor.execute("DELETE FROM medicos WHERE id = ?", (id,))
             db.commit()
             return True
         except sqlite3.Error as e:

@@ -31,9 +31,9 @@ class HistoriaClinicaServices ():
             print(f"Error de base de datos: {e}")
             return []
 
-    def eliminarHistoriaClinica(self, id_historia_clinica):
+    def eliminarHistoriaClinica(self, id):
         try:
-            cursor.execute("DELETE FROM historial_clinico WHERE id = ?", (id_historia_clinica,))
+            cursor.execute("DELETE FROM historial_clinico WHERE id = ?", (id,))
             db.commit()
             return True
         except sqlite3.Error as e:

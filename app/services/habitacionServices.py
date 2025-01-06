@@ -31,9 +31,9 @@ class HabitacionServices ():
             print(f"Error de base de datos: {e}")
             return []
     
-    def eliminarHabitacion (self, id_habitacion):
+    def eliminarHabitacion (self, id):
         try:
-            cursor.execute("DELETE FROM habitaciones WHERE id = ?", (id_habitacion,))
+            cursor.execute("DELETE FROM habitaciones WHERE id = ?", (id,))
             db.commit()
             return True
         except sqlite3.Error as e:
