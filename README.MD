@@ -12,12 +12,6 @@ Este proyecto es un **gestor de hospital local** desarrollado con **Python** �
 ### 🛠️ Tecnologías utilizadas:
 - **Python**: Lenguaje de programación principal. 🐍
 - **SQLite**: Base de datos local para almacenamiento de información. 💾
-- **Docker**: Contenerización de la aplicación para facilitar su despliegue y ejecución. 🐋
 
----
 
-## 🔧 Requisitos
 
-- **Docker**: Asegúrate de tener **Docker** instalado en tu máquina para ejecutar la aplicación de manera contenida. 🖥️
-  
-  - Si no tienes Docker instalado, puedes seguir la guía de instalación desde [aquí](https://docs.docker.com/get-docker/).
