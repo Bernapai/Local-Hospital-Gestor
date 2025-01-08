@@ -1,2 +1,0 @@
-# Especificar la versión de Python
-python==3.10
